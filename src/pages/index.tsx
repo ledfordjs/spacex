@@ -1,9 +1,10 @@
 import Head from 'next/head'
-import { useQuery } from '@apollo/client';
-import { GetLaunches } from '../queries/__generated__/GetLaunches';
-import { GET_LAUNCHES } from '../queries/get-launches';
-import { client } from '../queries/apollo-client'
 import { InferGetStaticPropsType } from 'next';
+
+import { GetLaunches } from '@/queries/__generated__/GetLaunches';
+import { GET_LAUNCHES } from '@/queries/get-launches';
+import { client } from '@/queries/apollo-client'
+import { Header } from '@/components/header'
 
 export const getServerSideProps = async () => {
   const { data } = await client.query<GetLaunches>({
@@ -23,11 +24,13 @@ export default function Home({ test, launches }: InferGetStaticPropsType<typeof 
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>SpaceX Info</title>
+        <link rel="icon" href="/spacex_logo_icon.ico" />
       </Head>
 
       <main>
+        <Header background="/mars.jpg" />
+
         <h1>SpaceX Launches</h1>
 
         <ul>
