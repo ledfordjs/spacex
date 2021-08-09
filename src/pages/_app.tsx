@@ -2,11 +2,14 @@ import type { AppProps } from 'next/app';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 
 import { client } from '@/queries/apollo-client';
+import { Navbar } from '@/components/navbar'
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <ApolloProvider client={client}>
+        <Navbar />
+
         <Component {...pageProps} />
       </ApolloProvider>
 
